@@ -1,5 +1,6 @@
 package com.caterpillar.smartrental.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -40,6 +41,15 @@ public class Equipment {
     private LocalDate purchaseDate;
 
     private Double totalUsageHours;
+
+    @Column(nullable = false)
+    private Double normalDailyUsageHours;
+
+    @Column(nullable = false)
+    private Double maximumRecommendedUsageHours;
+
+    @Column(nullable = false, precision = 12, scale = 2)
+    private BigDecimal penaltyPerExtraHour;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -107,6 +117,30 @@ public class Equipment {
 
     public void setTotalUsageHours(Double totalUsageHours) {
         this.totalUsageHours = totalUsageHours;
+    }
+
+    public Double getNormalDailyUsageHours() {
+        return normalDailyUsageHours;
+    }
+
+    public void setNormalDailyUsageHours(Double normalDailyUsageHours) {
+        this.normalDailyUsageHours = normalDailyUsageHours;
+    }
+
+    public Double getMaximumRecommendedUsageHours() {
+        return maximumRecommendedUsageHours;
+    }
+
+    public void setMaximumRecommendedUsageHours(Double maximumRecommendedUsageHours) {
+        this.maximumRecommendedUsageHours = maximumRecommendedUsageHours;
+    }
+
+    public BigDecimal getPenaltyPerExtraHour() {
+        return penaltyPerExtraHour;
+    }
+
+    public void setPenaltyPerExtraHour(BigDecimal penaltyPerExtraHour) {
+        this.penaltyPerExtraHour = penaltyPerExtraHour;
     }
 
     public LocalDateTime getCreatedAt() {

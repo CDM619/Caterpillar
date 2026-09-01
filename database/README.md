@@ -1,22 +1,20 @@
 # Database
 
-**MySQL 8.0** is the primary relational database for the Smart Rental
-Tracking System.
+**MySQL 8.0** is the primary relational database for the Smart Rental Tracking System.
 
-## Stage 1 status
+## Stage 2A Status
 
-No schema, tables, or migration scripts exist yet. The backend is configured
-to connect to MySQL using environment variables (see
-`backend/.env.example`), but no database objects are created in this stage.
+The core domain model is now connected to MySQL through Spring Boot, Spring Data JPA, and Hibernate.
 
-## What comes later
+The following tables are managed automatically by Hibernate:
 
-In later stages, this folder will contain:
+- `equipment`
+- `sites`
+- `operators`
+- `rentals`
+- `usage_logs`
 
-- Schema definition scripts (equipment, sites, operators, rentals,
-  check-in/check-out, usage logs, etc.)
-- Any migration scripts
-- Seed/sample data scripts for local development
+Hibernate is configured with:
 
-Until then, the backend can start and serve `/api/health` without a live
-database connection.
+```properties
+spring.jpa.hibernate.ddl-auto=update
